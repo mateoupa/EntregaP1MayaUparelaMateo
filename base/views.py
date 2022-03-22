@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from base.forms import registro_auditor, registroproducto,registro_almacen
+from base.forms import registro_auditor, registroproducto,registro_almacen,busqueda_producto
 from base.models import auditor,registro_producto,almacen
 
 
@@ -60,3 +60,15 @@ def registroalmacen(request):
                 
     formularioalmacen = registro_almacen()
     return render(request,'Principal/almacen.html',{'formularioalmacen':formularioalmacen})
+
+
+def busquedaproducto(request):
+    
+    productos_buscados=[]
+    dato=request.GET.get('partial_producto',None)
+    
+    if dato is not None:
+        productos_buscados=registro_producto.objects.filter(nombre__icontains=dato)
+    
+    buscador=busqueda_producto()
+    return render(request,'Principal/busqueda_producto.html',{'buscador':buscador,'productos_buscados':productos_buscados})

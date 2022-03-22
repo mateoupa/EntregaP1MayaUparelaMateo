@@ -13,6 +13,10 @@ class registro_producto(models.Model):
     precio = models.IntegerField()
     cantidad =models.IntegerField()
     
+    def __str__(self):
+        return f'Has encontrado el siguiente producto --> {self.nombre} <-- con precio {self.precio} y cantidad existente {self.cantidad}'
+    
+    
 class almacen(models.Model):
     nombre = models.CharField(max_length=20)
     turno = models.IntegerField()

@@ -1,0 +1,23 @@
+
+{% extends 'Principal/index.html' %}
+
+{% block auditor %}
+    <form action="" method="get">
+        {% csrf_token %}
+        
+        <table>
+            {{buscador.as_table}}
+        </table>
+        <input type="submit" placeholder='Enviar'>
+        {% comment %} <button class="btn btn-primary btn-lg disabled" type="submit">Enviar</button> {% endcomment %}
+
+    </form>
+
+    {% for registro_producto in productos_buscados  %}
+        <li>
+            {{registro_producto}}
+        </li>
+    
+    {% endfor %}
+
+{% endblock auditor %}

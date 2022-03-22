@@ -17,3 +17,7 @@ class registroproducto(forms.Form):
 class registro_almacen(forms.Form):
     nombre = forms.CharField(max_length=20)
     turno = forms.IntegerField()
+    
+    
+class busqueda_producto(forms.Form):
+    partial_producto=forms.CharField(max_length=20)
